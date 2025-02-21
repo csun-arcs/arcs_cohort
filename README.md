@@ -16,7 +16,8 @@ flowchart LR
     
     subgraph arcs_cohort_sensing[arcs_cohort_sensing]
       zed_ros2_wrapper("zed_ros2_wrapper"):::node
-      imu_driver_node("imu_driver_node"):::node
+      vectornav("vectornav"):::node
+      velodyne("velodyne"):::node
     end
     class arcs_cohort_sensing pkg
     
@@ -55,9 +56,13 @@ flowchart LR
     
     fleet_coordinator -->|"high-level tasks"| bt_navigator
     
-    imu_driver_node -->|"imu data"| perception_node
+    vectornav -->|"/imu"| perception_node
+
+    velodyne -->|"/velodyne_points"| perception_node
 
     %% Links
     click dynamixel_hardware href "https://github.com/dynamixel-community/dynamixel_hardware"
     click zed_ros2_wrapper href "https://github.com/stereolabs/zed-ros2-wrapper"
+    click vectornav href "https://github.com/dawonn/vectornav/tree/ros2"
+    click velodyne href "https://github.com/ros-drivers/velodyne"
 ```
