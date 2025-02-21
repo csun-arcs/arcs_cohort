@@ -5,57 +5,59 @@ A repository for tracking general tasks/issues, milestones, roadmap, etc. releva
 
 ```mermaid
 flowchart LR
+    %% Packages and nodes
     classDef pkg fill:#dae8fc,stroke:#6c8ebf,stroke-width:1px,color:#000
     classDef node fill:#ffffff,stroke:#999,color:#000,stroke-width:1px
     
-    subgraph A[arcs_cohort_core]
-      A1("ros2_control / dynamixel_hardware"):::node
-      click A1 "[https://github.com/youtalk/dynamixel_control](https://github.com/dynamixel-community/dynamixel_hardware)" "View dynamixel_hardware repo"
+    subgraph arcs_cohort_core[arcs_cohort_core]
+      dynamixel_hardware("dynamixel_hardware / ros2_control"):::node
     end
-    class A pkg
+    class arcs_cohort_core pkg
     
-    subgraph B[arcs_cohort_sensing]
-      B1("zed_camera_node"):::node
-      B2("imu_driver_node"):::node
+    subgraph arcs_cohort_sensing[arcs_cohort_sensing]
+      zed_ros2_wrapper("zed_ros2_wrapper"):::node
+      imu_driver_node("imu_driver_node"):::node
     end
-    class B pkg
+    class arcs_cohort_sensing pkg
     
-    subgraph C[arcs_cohort_perception]
-      C1("perception_node"):::node
+    subgraph arcs_cohort_perception[arcs_cohort_perception]
+      perception_node("perception_node"):::node
     end
-    class C pkg
+    class arcs_cohort_perception pkg
     
-    subgraph D[arcs_cohort_navigation]
-      D1("planner_server"):::node
-      D2("controller_server"):::node
-      D3("bt_navigator"):::node
+    subgraph arcs_cohort_navigation[arcs_cohort_navigation]
+      planner_server("planner_server"):::node
+      controller_server("controller_server"):::node
+      bt_navigator("bt_navigator"):::node
     end
-    class D pkg
+    class arcs_cohort_navigation pkg
     
-    subgraph E[arcs_cohort_control]
-      E1("vel_cmd_bridge"):::node
+    subgraph arcs_cohort_control[arcs_cohort_control]
+      vel_cmd_bridge("vel_cmd_bridge"):::node
     end
-    class E pkg
+    class arcs_cohort_control pkg
     
-    subgraph F[arcs_cohort_fleet]
-      F1("leader_election_node"):::node
-      F2("fleet_coordinator"):::node
+    subgraph arcs_cohort_fleet[arcs_cohort_fleet]
+      fleet_coordinator("fleet_coordinator"):::node
     end
-    class F pkg
+    class arcs_cohort_fleet pkg
     
-    %% Example arrows
-    A1 -->|"/odom"| D1
-    A1 -->|"/odom"| D2
-    D2 -->|"/cmd_vel"| A1
+    %% Diagram
+    dynamixel_hardware -->|"/odom"| planner_server
+    dynamixel_hardware -->|"/odom"| controller_server
+    controller_server -->|"/cmd_vel"| dynamixel_hardware
     
-    B1 -->|"image topics"| C1
-    C1 -->|"obstacles/map"| D1
+    zed_ros2_wrapper -->|"image topics"| perception_node
+    perception_node -->|"obstacles/map"| planner_server
     
-    D2 -->|"/cmd_vel"| E1
-    E1 -->|"/cmd_actuator"| A1
+    controller_server -->|"/cmd_vel"| vel_cmd_bridge
+    vel_cmd_bridge -->|"/cmd_actuator"| dynamixel_hardware
     
-    F2 -->|"high-level tasks"| D3
-    F1 -->|"leader msgs"| F2
+    fleet_coordinator -->|"high-level tasks"| bt_navigator
     
-    B2 -->|"imu data"| C1
+    imu_driver_node -->|"imu data"| perception_node
+
+    %% Links
+    click dynamixel_hardware href "https://github.com/dynamixel-community/dynamixel_hardware"
+    click zed_ros2_wrapper href "https://github.com/stereolabs/zed-ros2-wrapper"
 ```
