@@ -1,6 +1,10 @@
 # arcs_cohort
 A repository for tracking general tasks/issues, milestones, roadmap, etc. relevant to the overall CSUN ARCS CoHORT project.
 
+## CoHORT Project Roadmap
+
+The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects).
+
 ## CoHORT System Architecture
 
 ```mermaid
