@@ -3,7 +3,7 @@ A repository for tracking general tasks/issues, milestones, roadmap, etc. releva
 
 ## CoHORT Project Roadmap
 
-The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects).
+The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects/2).
 
 ## CoHORT System Architecture
 
