@@ -84,7 +84,7 @@ flowchart LR
     %% ------------------------------------------------------------------------
     subgraph PERCEPTION[arcs_cohort_perception]
       direction TB
-      arcs_cohort_object_detector["arcs_cohort_arcs_cohort_object_detector"]:::node
+      arcs_cohort_object_detector["arcs_cohort_object_detector"]:::node
       arcs_cohort_mapper["arcs_cohort_mapper"]:::node
     end
     class PERCEPTION pkg
