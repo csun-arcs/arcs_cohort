@@ -21,7 +21,7 @@ flowchart LR
     %% ------------------------------------------------------------------------
     %% arcs_cohort_description
     %% ------------------------------------------------------------------------
-    subgraph DESC[" "]
+    subgraph arcs_cohort_description[" "]
       direction TB
       desc_link["arcs_cohort_description"]:::nobox
 
@@ -32,13 +32,13 @@ flowchart LR
       class desc_sub subpkg
 
     end
-    class DESC pkg
+    class arcs_cohort_description pkg
     click desc_link "https://github.com/csun-arcs/arcs_cohort_description" "arcs_cohort_description"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_bringup
     %% ------------------------------------------------------------------------
-    subgraph BRINGUP[" "]
+    subgraph arcs_cohort_bringup[" "]
       direction TB
       bringup_link["arcs_cohort_bringup"]:::nobox
 
@@ -50,13 +50,13 @@ flowchart LR
       class bringup_sub subpkg
 
     end
-    class BRINGUP pkg
+    class arcs_cohort_bringup pkg
     click bringup_link "https://github.com/csun-arcs/arcs_cohort_bringup" "arcs_cohort_bringup"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_core
     %% ------------------------------------------------------------------------
-    subgraph CORE[" "]
+    subgraph arcs_cohort_core[" "]
       direction TB
       core_link["arcs_cohort_core"]:::nobox
 
@@ -70,7 +70,7 @@ flowchart LR
       click dyn_hw "https://github.com/dynamixel-community/dynamixel_hardware" "dynamixel_hardware"
 
     end
-    class CORE pkg
+    class arcs_cohort_core pkg
     click core_link "https://github.com/csun-arcs/arcs_cohort_core" "arcs_cohort_core"
 
     %% ------------------------------------------------------------------------
@@ -85,7 +85,7 @@ flowchart LR
     %% ------------------------------------------------------------------------
     %% arcs_cohort_sensing
     %% ------------------------------------------------------------------------
-    subgraph SENSING[" "]
+    subgraph arcs_cohort_sensing[" "]
       direction TB
       sensing_link["arcs_cohort_sensing"]:::nobox
 
@@ -125,13 +125,13 @@ flowchart LR
       end
       class sensing_sub subpkg
     end
-    class SENSING pkg
+    class arcs_cohort_sensing pkg
     click sensing_link "https://github.com/csun-arcs/arcs_cohort_sensing" "arcs_cohort_sensing"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_perception
     %% ------------------------------------------------------------------------
-    subgraph PERCEPTION[" "]
+    subgraph arcs_cohort_perception[" "]
       direction TB
       perception_link["arcs_cohort_perception"]:::nobox
 
@@ -145,14 +145,14 @@ flowchart LR
       click arcs_cohort_mapper "https://github.com/csun-arcs/arcs_cohort_object_detector" "arcs_cohort_mapper"
 
     end
-    class PERCEPTION pkg
+    class arcs_cohort_perception pkg
     click perception_link "https://github.com/csun-arcs/arcs_cohort_perception" "arcs_cohort_perception"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_navigation
     %% Sub-subgraph for Nav2 + costmaps
     %% ------------------------------------------------------------------------
-    subgraph NAV[" "]
+    subgraph arcs_cohort_navigation[" "]
       direction TB
       navigation_link["arcs_cohort_navigation"]:::nobox
 
@@ -167,17 +167,17 @@ flowchart LR
       class nav2_sub subpkg
 
     end
-    class NAV pkg
+    class arcs_cohort_navigation pkg
     click navigation_link "https://github.com/csun-arcs/arcs_cohort_navigation" "arcs_cohort_navigation"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_fleet
     %% ------------------------------------------------------------------------
-    subgraph FLEET[arcs_cohort_fleet]
+    subgraph arcs_cohort_fleet[arcs_cohort_fleet]
       fleet_coordinator["fleet_coordinator"]:::node
-      leader_election["leader_election_node"]:::node
+      leader_elector["leader_elector"]:::node
     end
-    class FLEET pkg
+    class arcs_cohort_fleet pkg
 
     %% ------------------------------------------------------------------------
     %% TOPICS (for one-to-many arrows)
@@ -208,7 +208,7 @@ flowchart LR
     %% EDGES / DATA FLOW
     %% ------------------------------------------------------------------------
 
-    %% DESCRIPTION -> CORE
+    %% arcs_cohort_descriptionRIPTION -> arcs_cohort_core
     desc_urdf -- references --> core_sub
     desc_sensors -- references --> core_sub
     bringup_launchers --launches--> core_sub
@@ -260,7 +260,7 @@ flowchart LR
 
     %% arcs_cohort_fleet
     fleet_coordinator --> fleet_goals
-    leader_election --> fleet_coordinator
+    leader_elector --> fleet_coordinator
     fleet_goals --> behavior_srv
 
     %% Possibly behavior server interacts with planner / controller
