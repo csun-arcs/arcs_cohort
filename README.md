@@ -54,6 +54,25 @@ flowchart LR
     click bringup_link "https://github.com/csun-arcs/arcs_cohort_bringup" "arcs_cohort_bringup"
 
     %% ------------------------------------------------------------------------
+    %% arcs_cohort_simulation
+    %% ------------------------------------------------------------------------
+    subgraph arcs_cohort_simulation[" "]
+      direction TB
+      sim_link["arcs_cohort_simulation"]:::nobox
+
+      subgraph sim_sub[Gazebo + Isaac Sim]
+        arcs_cohort_gazebo_sim["arcs_cohort_gazebo_sim"]:::node
+        arcs_cohort_issac_sim["arcs_cohort_issac_sim"]:::node
+      end
+      class sim_sub subpkg
+
+    end
+    class arcs_cohort_simulation pkg
+    click sim_link "https://github.com/csun-arcs/arcs_cohort_simulation" "arcs_cohort_simulation"
+    click arcs_cohort_gazebo_sim "https://github.com/csun-arcs/arcs_cohort_gazebo_sim" "arcs_cohort_gazebo_sim"
+    click arcs_cohort_issac_sim "https://github.com/csun-arcs/arcs_cohort_issacsim" "arcs_cohort_issac_sim"
+
+    %% ------------------------------------------------------------------------
     %% arcs_cohort_core
     %% ------------------------------------------------------------------------
     subgraph arcs_cohort_core[" "]
@@ -160,16 +179,16 @@ flowchart LR
 
       subgraph nav2_sub[Nav2 Stack]
       direction TB
-        planner_srv["planner_server"]:::node
-        controller_srv["controller_server"]:::node
-        behavior_srv["behavior_server<br/>(BT Navigator)"]:::node
+        planner_server["planner_server"]:::node
+        controller_server["controller_server"]:::node
+        behavior_server["behavior_server<br/>(BT Navigator)"]:::node
         global_costmap["global_costmap"]:::node
         local_costmap["local_costmap"]:::node
       end
       class nav2_sub subpkg
-      click planner_srv "https://docs.nav2.org/configuration/packages/configuring-planner-server.html" "planner_server"
-      click controller_srv "https://docs.nav2.org/configuration/packages/configuring-controller-server.html" "controller_server"
-      click behavior_srv "https://docs.nav2.org/configuration/packages/configuring-behavior-server.html" "behavior_server"
+      click planner_server "https://docs.nav2.org/configuration/packages/configuring-planner-server.html" "planner_server"
+      click controller_server "https://docs.nav2.org/configuration/packages/configuring-controller-server.html" "controller_server"
+      click behavior_server "https://docs.nav2.org/configuration/packages/configuring-behavior-server.html" "behavior_server"
       click global_costmap "https://docs.nav2.org/configuration/packages/configuring-costmaps.html" "global_costmap"
       click local_costmap "https://docs.nav2.org/configuration/packages/configuring-costmaps.html" "local_costmap"
 
@@ -215,14 +234,27 @@ flowchart LR
     %% EDGES / DATA FLOW
     %% ------------------------------------------------------------------------
 
-    %% arcs_cohort_descriptionRIPTION -> arcs_cohort_core
+    %% arcs_cohort_description -> arcs_cohort_core
     desc_urdf -- references --> core_sub
     desc_sensors -- references --> core_sub
     bringup_launchers --launches--> core_sub
     bringup_launchers --launches--> arcs_cohort_camera
     bringup_launchers --launches--> arcs_cohort_imu
     bringup_launchers --launches--> arcs_cohort_lidar
+    bringup_launchers --launches--> arcs_cohort_gazebo_sim
+    bringup_launchers --launches--> arcs_cohort_issac_sim
     bringup_params --param_configures--> core_sub
+
+    %% arcs_cohort_simulation topic mappings
+    arcs_cohort_gazebo_sim --> zed_img_topic
+    arcs_cohort_gazebo_sim --> imu_topic
+    arcs_cohort_gazebo_sim --> lidar_topic
+    arcs_cohort_gazebo_sim --> odom_topic
+
+    arcs_cohort_issac_sim --> zed_img_topic
+    arcs_cohort_issac_sim --> imu_topic
+    arcs_cohort_issac_sim --> lidar_topic
+    arcs_cohort_issac_sim --> odom_topic
 
     %% arcs_cohort_core producing /odom from diff drive
     joint_ctrl --> odom_topic
@@ -230,14 +262,14 @@ flowchart LR
     joint_state_broadcaster --> joint_ctrl
 
     %% arcs_cohort_navigation consumes /odom
-    odom_topic --> planner_srv
-    odom_topic --> controller_srv
-    odom_topic --> behavior_srv
+    odom_topic --> planner_server
+    odom_topic --> controller_server
+    odom_topic --> behavior_server
     odom_topic --> global_costmap
     odom_topic --> local_costmap
 
     %% arcs_cohort_navigation publishes /cmd_vel
-    controller_srv --> cmd_vel_topic
+    controller_server --> cmd_vel_topic
 
     %% arcs_cohort_control bridging
     cmd_vel_topic --> vel_bridge
@@ -263,14 +295,14 @@ flowchart LR
     %% arcs_cohort_navigation consumes /perception
     perception_obstacles --> global_costmap
     perception_obstacles --> local_costmap
-    perception_obstacles --> planner_srv
+    perception_obstacles --> planner_server
 
     %% arcs_cohort_fleet
     fleet_coordinator --> fleet_goals
     leader_elector --> fleet_coordinator
-    fleet_goals --> behavior_srv
+    fleet_goals --> behavior_server
 
     %% Possibly behavior server interacts with planner / controller
-    behavior_srv --> planner_srv
-    behavior_srv --> controller_srv
+    behavior_server --> planner_server
+    behavior_server --> controller_server
 ```
