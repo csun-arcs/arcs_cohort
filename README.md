@@ -167,6 +167,11 @@ flowchart LR
         local_costmap["local_costmap"]:::node
       end
       class nav2_sub subpkg
+      click planner_srv "https://docs.nav2.org/configuration/packages/configuring-planner-server.html" "planner_server"
+      click controller_srv "https://docs.nav2.org/configuration/packages/configuring-controller-server.html" "controller_server"
+      click behavior_srv "https://docs.nav2.org/configuration/packages/configuring-behavior-server.html" "behavior_server"
+      click global_costmap "https://docs.nav2.org/configuration/packages/configuring-costmaps.html" "global_costmap"
+      click local_costmap "https://docs.nav2.org/configuration/packages/configuring-costmaps.html" "local_costmap"
 
     end
     class arcs_cohort_navigation pkg
