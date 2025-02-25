@@ -68,6 +68,8 @@ flowchart LR
       end
       class core_sub subpkg
       click dyn_hw "https://github.com/dynamixel-community/dynamixel_hardware" "dynamixel_hardware"
+      click joint_state_broadcaster "https://control.ros.org/jazzy/doc/ros2_controllers/joint_state_broadcaster/doc/userdoc.html" "joint_state_broadcaster"
+      click joint_ctrl "https://control.ros.org/jazzy/doc/ros2_controllers/velocity_controllers/doc/userdoc.html#velocity-controllers" "velocity_controller"
 
     end
     class arcs_cohort_core pkg
