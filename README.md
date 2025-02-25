@@ -20,8 +20,11 @@ flowchart LR
     %% arcs_cohort_description
     %% ------------------------------------------------------------------------
     subgraph DESC[arcs_cohort_description]
-      desc_urdf["URDF & XACROs"]:::node
-      desc_sensors["Sensor Models"]:::node
+      subgraph desc_sub[Robot Models]
+      direction TB
+        desc_urdf["URDF & XACROs"]:::node
+        desc_sensors["Sensor Models"]:::node
+      end
     end
     class DESC pkg
 
@@ -29,8 +32,11 @@ flowchart LR
     %% arcs_cohort_bringup
     %% ------------------------------------------------------------------------
     subgraph BRINGUP[arcs_cohort_bringup]
-      bringup_launchers["Main Launch Files"]:::node
-      bringup_params["Param / YAML Config"]:::node
+      subgraph bringup_sub[Launchers + Configs]
+      direction TB
+        bringup_launchers["Main Launch Files"]:::node
+        bringup_params["Param / YAML Config"]:::node
+      end
     end
     class BRINGUP pkg
 
