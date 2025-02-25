@@ -38,7 +38,7 @@ flowchart LR
     %% arcs_cohort_core
     %% ------------------------------------------------------------------------
     subgraph CORE[arcs_cohort_core]
-      subgraph core_sub[ros2_control + Drivers]
+      subgraph core_sub[Drivers + ROS 2 Control]
       direction TB
         dyn_hw["dynamixel_hardware<br/>(SystemInterface)"]:::node
         joint_ctrl["velocity_controller<br/> or diff_drive_controller"]:::node
