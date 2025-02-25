@@ -84,8 +84,8 @@ flowchart LR
     %% ------------------------------------------------------------------------
     subgraph PERCEPTION[arcs_cohort_perception]
       direction TB
-      object_detector["object_detection_node"]:::node
-      mapper_node["mapper_node"]:::node
+      arcs_cohort_object_detector["arcs_cohort_arcs_cohort_object_detector"]:::node
+      arcs_cohort_mapper["arcs_cohort_mapper"]:::node
     end
     class PERCEPTION pkg
 
@@ -176,19 +176,19 @@ flowchart LR
 
     %% arcs_cohort_sensing -> arcs_cohort_perception
     zed_node --> zed_img_topic
-    zed_img_topic --> object_detector
-    zed_img_topic --> mapper_node
+    zed_img_topic --> arcs_cohort_object_detector
+    zed_img_topic --> arcs_cohort_mapper
 
     imu_node --> imu_topic
-    imu_topic --> mapper_node
+    imu_topic --> arcs_cohort_mapper
 
     lidar_node --> lidar_topic
-    lidar_topic --> mapper_node
-    lidar_topic --> object_detector
+    lidar_topic --> arcs_cohort_mapper
+    lidar_topic --> arcs_cohort_object_detector
 
     %% arcs_cohort_perception -> obstacles / map
-    object_detector --> perception_obstacles
-    mapper_node --> perception_obstacles
+    arcs_cohort_object_detector --> perception_obstacles
+    arcs_cohort_mapper --> perception_obstacles
 
     %% arcs_cohort_navigation consumes /perception
     perception_obstacles --> global_costmap
