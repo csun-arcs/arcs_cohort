@@ -178,7 +178,7 @@ flowchart LR
       navigation_link["arcs_cohort_navigation"]:::nobox
 
       subgraph nav2_sub[Nav2 Stack]
-      direction TB
+        direction TB
         planner_server["planner_server"]:::node
         controller_server["controller_server"]:::node
         behavior_server["behavior_server<br/>(BT Navigator)"]:::node
@@ -199,9 +199,15 @@ flowchart LR
     %% ------------------------------------------------------------------------
     %% arcs_cohort_fleet
     %% ------------------------------------------------------------------------
-    subgraph arcs_cohort_fleet[arcs_cohort_fleet]
-      fleet_coordinator["fleet_coordinator"]:::node
-      leader_elector["leader_elector"]:::node
+    subgraph arcs_cohort_fleet[" "]
+      direction TB
+      fleet_link["arcs_cohort_fleet"]:::nobox
+      
+      subgraph fleet_sub[PLACEHOLDER: Multi-Agent Autonomy Stack]
+        fleet_coordinator["fleet_coordinator"]:::node
+        leader_elector["leader_elector"]:::node
+      end
+      class fleet_sub subpkg
     end
     class arcs_cohort_fleet pkg
 
