@@ -80,7 +80,7 @@ flowchart LR
       core_link["arcs_cohort_core"]:::nobox
 
       subgraph core_sub[Motor Drivers + ROS 2 Control]
-      direction TB
+        direction TB
         dyn_hw["dynamixel_hardware<br/>(SystemInterface)"]:::node
         joint_ctrl["velocity_controller<br/> or diff_drive_controller"]:::node
         joint_state_broadcaster["joint_state_broadcaster"]:::node
@@ -97,11 +97,18 @@ flowchart LR
     %% ------------------------------------------------------------------------
     %% arcs_cohort_control (optional advanced control logic)
     %% ------------------------------------------------------------------------
-    subgraph CONTROL[arcs_cohort_control]
-      vel_bridge["vel_cmd_bridge"]:::node
-      custom_ctrl["(optional) custom logic"]:::node
+    subgraph arcs_cohort_control[" "]
+      direction TB
+      control_link["arcs_cohort_control"]:::nobox
+
+      subgraph control_sub[PLACEHOLDER: Optional Advanced Control Stack]
+        direction TB
+        vel_bridge["vel_cmd_bridge"]:::node
+        custom_ctrl["custom control logic"]:::node
+      end
+      class control_sub subpkg
     end
-    class CONTROL pkg
+    class arcs_cohort_control pkg
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_sensing
