@@ -70,7 +70,7 @@ flowchart LR
     class arcs_cohort_simulation pkg
     click sim_link "https://github.com/csun-arcs/arcs_cohort_simulation" "arcs_cohort_simulation"
     click arcs_cohort_gazebo_sim "https://github.com/csun-arcs/arcs_cohort_gazebo_sim" "arcs_cohort_gazebo_sim"
-    click arcs_cohort_issac_sim "https://github.com/csun-arcs/arcs_cohort_issacsim" "arcs_cohort_issac_sim"
+    click arcs_cohort_issac_sim "https://github.com/csun-arcs/arcs_cohort_issac_sim" "arcs_cohort_issac_sim"
 
     %% ------------------------------------------------------------------------
     %% arcs_cohort_core
