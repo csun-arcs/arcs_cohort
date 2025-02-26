@@ -163,7 +163,7 @@ flowchart LR
       end
       class perception_sub subpkg
       click arcs_cohort_object_detector "https://github.com/csun-arcs/arcs_cohort_object_detector" "arcs_cohort_object_detector"
-      click arcs_cohort_mapper "https://github.com/csun-arcs/arcs_cohort_object_detector" "arcs_cohort_mapper"
+      click arcs_cohort_mapper "https://github.com/csun-arcs/arcs_cohort_mapper" "arcs_cohort_mapper"
 
     end
     class arcs_cohort_perception pkg
