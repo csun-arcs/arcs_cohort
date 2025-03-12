@@ -1,0 +1,71 @@
+.menu
+{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: 0.2rem solid var(--light-gray-color);
+}
+
+.menu-spacing
+{
+    height: 6.1rem;
+}
+
+.menu-content
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.menu h1
+{
+    font-size: 2.3rem;
+    color: var(--primary-color);
+}
+
+.menu h1 a
+{
+    color: inherit; /* from .menu h1 */
+}
+
+.menu ul
+{
+   list-style: none;
+   display: flex;
+} 
+
+.menu ul li a
+{
+    display: block;
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.menu ul li a::after
+{
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0.2rem;
+    background: var(--secondary-color);
+    transition: all 350ms ease-in-out;
+}
+
+.menu ul li a:hover::after
+{
+    width: 50%;
+    left: 25%;
+}
+

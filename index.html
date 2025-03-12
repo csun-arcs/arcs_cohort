@@ -1,0 +1,281 @@
+d-CSS-master\index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoHORT - Cooperative Human Operations with Robot Teams | ARCS</title>
+    <link rel="shortcut icon" href="./assets/img/icon.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/classes.css">
+    <link rel="stylesheet" href="./assets/css/elements.css">
+    <link rel="stylesheet" href="./assets/css/menu.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/variables.css">
+</head>
+
+<body>
+
+    <input type="checkbox" aria-label="Close Menu" role="button" id="close-menu" class="close-menu">
+    <!-- this is the button: -->
+    <label for="close-menu" title="close menu" class="close-menu-label"></label>
+
+    <aside class="menu white-bg">
+        <div class="main-content menu-content">
+            <h1 onclick="getElementById('close-menu').checked = false;">
+                <a href="#intro"><img src="./assets/img/arcs_logo.png" alt="ARCS Logo" width="150"></a>
+            </h1>
+    
+            <nav>
+                <ul onclick="getElementById('close-menu').checked = false;">
+                    <li><a href="#intro">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="menu-spacing"></div>
+
+    <section id="intro" class="main-bg section">
+        <div class="main-content intro-content">
+            <div class="intro-text-content">
+                <h2>CoHORT Project</h2>
+                <p>
+                    Cooperative Human Operations with Robot Teams (CoHORT) is inspired by the NASA JPL CADRE rover system. Our research develops hardware and software for compact rover teams performing autonomous exploration tasks.
+                </p>
+                <a href="#research" class="button">Learn More</a>
+            </div>
+            <div class="intro-img">
+                <img src="./assets/img/white_arcs_logo.png" alt="CoHORT Rover Concept">
+                <!-- Replace with actual rover image -->
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="white-bg section">
+        <div class="main-content grid">
+            <h2 class="grid-main-heading">Rover Gallery</h2>
+            <p id="gallery-description">
+                CoHORT rover prototypes and field tests
+            </p>
+
+            <div class="grid-content">
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?rover" alt="CoHORT rover prototype">
+                    <!-- Replace with actual rover image -->
+                </div>
+                
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?robot" alt="Rover team coordination test">
+                    <!-- Replace with actual rover team image -->
+                </div>
+
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?robotics" alt="Rover sensor array closeup">
+                    <!-- Replace with actual rover component image -->
+                </div>
+
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?prototype" alt="Early design prototype">
+                    <!-- Replace with actual prototype image -->
+                </div>
+
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?simulation" alt="Rover simulation environment">
+                    <!-- Replace with actual simulation screenshot -->
+                </div>
+
+                <div class="gallery-img">
+                    <img src="http://source.unsplash.com/random/360x230?testing" alt="Field testing the rover team">
+                    <!-- Replace with actual field test image -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="main-bg section">
+        <div class="grid main-content">
+            <h2 class="grid-main-heading">Research Focus</h2>
+            <p class="grid-description">
+                Key areas of investigation in the CoHORT project
+            </p>
+
+            <div class="grid-content">
+                <article>
+                    <h3>Autonomous Coordination</h3>
+                    <p>
+                        Developing algorithms and protocols that enable multiple rovers to coordinate their activities without constant human supervision. This includes task allocation, path planning, and collective decision-making strategies.
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>Human-Robot Interaction</h3>
+                    <p>
+                        Investigating optimal interfaces and interaction paradigms for humans to effectively monitor and guide teams of autonomous rovers. We're exploring intuitive control systems that balance autonomy with human oversight.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Hardware Development</h3>
+                    <p>
+                        Creating robust, modular rover platforms that can operate reliably in challenging environments. Our design emphasizes energy efficiency, sensor integration, and communications capabilities for team coordination.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="white-bg section">
+        <div class="main-content grid">
+            <h2 class="grid-main-heading">Research Team</h2>
+            <p class="grid-description">
+                Meet the researchers behind the CoHORT project
+            </p>
+
+            <div class="grid-content">
+                <article>
+                    <h3>Lead Researchers</h3>
+                    <p>
+                        Prof. Amiel Hartman, ME<br>
+                        Dr. Barry Ridge, CS<br>
+                        Mr. Subhobrata Chakraborty, CS<br>
+                        Dr. Nhut Ho, ME
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>Collaborators</h3>
+                    <p>
+                        Dr. Jean-Pierre de la Croix, JPL<br>
+                        And other partners from NASA JPL who provide expertise in space robotics and autonomous systems.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Student Team</h3>
+                    <p>
+                        Hariet Yousefi, ME<br>
+                        Our student researchers gain hands-on experience in robotics, software development, and systems engineering through their work on the CoHORT project.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="commercialization" class="main-bg section">
+        <div class="main-content grid">
+            <h2 class="grid-main-heading">Applications & Impact</h2>
+            <p class="grid-description">
+                How CoHORT research can benefit society and industry
+            </p>
+
+            <div class="grid-content">
+                <article>
+                    <h3>Space Exploration</h3>
+                    <p>
+                        CoHORT technologies can enhance planetary exploration missions by enabling teams of rovers to collaboratively map and investigate larger areas with greater efficiency and resilience than single-rover approaches.
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>Disaster Response</h3>
+                    <p>
+                        Our research has applications in search and rescue operations, where teams of small robots can be deployed to assess dangerous environments and locate survivors without putting human responders at risk.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Industrial Inspection</h3>
+                    <p>
+                        The multi-robot coordination algorithms developed in CoHORT can be adapted for automated inspection of large industrial facilities, infrastructure, or agricultural areas using teams of specialized robots.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+<!--
+    <section id="contact" class="main-bg section">
+        <div class="main-content contact-content">
+            <div class="contact-text-content">
+                <h2>Contact the CoHORT Team</h2>
+                <p>
+                    Interested in learning more about the CoHORT project or exploring potential collaborations? Get in touch with our research team to discuss our work and opportunities for partnership.
+                </p>
+                <p>
+                    Autonomy Research Center for STEAHM<br>
+                    California State University, Northridge<br>
+                    9324 Reseda Blvd. Room 201<br>
+                    Northridge, CA 91324<br>
+                    Tel: 818.677-5780<br>
+                    Email: arcs@csun.edu
+                </p>
+            </div>
+            <div class="contact-img">
+                <img src="./assets/img/contact-us.svg" alt="Contact CoHORT">
+                <!- You may want to replace this with a rover team image -
+            </div>
+
+            <div class="contact-form">
+                <fieldset class="form-grid">
+                    <legend>Contact Us</legend>
+
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="first-name" id="first-name" placeholder="Enter your first name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="last-name" id="last-name" placeholder="Enter your last name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea name="message" cols="30" rows="10" id="message" placeholder="Type your message or inquiries here..."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" name="message">Send Message</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+-->
+<section id="about" class="white-bg section">
+    <div class="main-content flexbox-template-content">
+        <h2>About CoHORT</h2>
+        <p>
+            The Cooperative Human Operations with Robot Teams (CoHORT) project at ARCS investigates how teams of small rovers can work together to perform complex tasks autonomously, while also effectively interfacing with human operators.
+        </p>
+        <p>
+            Inspired by NASA JPL's CADRE (Cooperative Autonomous Distributed Robotic Explorers) system, our project focuses on developing both the hardware and software needed for effective multi-robot coordination and human-robot teaming.
+        </p>
+        <p>
+            This research has applications in space exploration, disaster response, environmental monitoring, and other scenarios where human access is limited or dangerous.
+        </p>
+    </div>
+</section>
+
+    <footer class="footer white-bg">
+        <p>© 2025 Autonomy Research Center for STEAHM. All rights reserved. | <a href="#intro">Terms and Conditions</a></p>
+    </footer>
+
+    <a id="back-to-top" href="#intro">➤</a>
+</body>
+</html>
