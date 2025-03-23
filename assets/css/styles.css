@@ -82,6 +82,19 @@
     padding-bottom: 2rem;
 }
 
+/* Find these rules in your styles.css file and modify them */
+
+/* Add a new class to disable counters for specific sections */
+.grid-content.no-numbers {
+    counter-reset: none;
+}
+
+.grid-content.no-numbers h3::before {
+    counter-increment: none;
+    content: none;
+    display: none;
+}
+
 .grid-content h3::before 
 {
     counter-increment: grid-counter;

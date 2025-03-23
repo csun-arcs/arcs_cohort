@@ -9,9 +9,8 @@
     border-bottom: 0.2rem solid var(--light-gray-color);
 }
 
-.menu-spacing
-{
-    height: 6.1rem;
+.menu-spacing {
+    height: 0px; /* Adjust this value to match your menu height */
 }
 
 .menu-content

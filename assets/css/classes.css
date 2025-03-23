@@ -2,10 +2,10 @@
 .main-bg
 {
     color: var(--white-color);
-    background-image: url('../img/main-bg.svg');
+    background-image: url('../img/stars_pic.jpg');
     background-size: cover;
     background-position: center center;
- /* background by SVGBackgrounds.com */
+
 }
 
 .white-bg
@@ -23,11 +23,32 @@
 
 .section
 {
-    min-height: 100vh;
+    min-height: 10vh;
 }
 
 body .full-width
 {
     width: 100%;
     flex: 1 1 100%;
+}
+
+.button {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    padding: 1rem 2rem; /* Reduced padding (horizontal padding reduced from 3rem to 2rem) */
+    border-radius: 4px;
+    font-size: 1.35rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 300ms ease-in-out;
+    /* Add this if you want a specific width */
+    width: 250px; /* or set a specific width like 120px */
+    text-align: center;
+}
+
+.button:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
 }

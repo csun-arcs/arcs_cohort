@@ -1,4 +1,4 @@
-d-CSS-master\index.html
+cohort\index.html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +18,7 @@ d-CSS-master\index.html
     <link rel="stylesheet" href="./assets/css/menu.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/variables.css">
+    <link rel="stylesheet" href="./assets/css/team.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@ d-CSS-master\index.html
     <aside class="menu white-bg">
         <div class="main-content menu-content">
             <h1 onclick="getElementById('close-menu').checked = false;">
-                <a href="#intro"><img src="./assets/img/arcs_logo.png" alt="ARCS Logo" width="150"></a>
+                <a href="#intro"><img src="./assets/img/arcs_logo.png" alt="ARCS Logo" width="120"></a>
             </h1>
     
             <nav>
@@ -66,32 +67,32 @@ d-CSS-master\index.html
         <div class="main-content grid">
             <h2 class="grid-main-heading">Rover Gallery</h2>
             <p id="gallery-description">
-                CoHORT rover prototypes and field tests
+                CoHORT Rover Prototypes
             </p>
 
             <div class="grid-content">
                 <div class="gallery-img">
-                    <img src="http://source.unsplash.com/random/360x230?rover" alt="CoHORT rover prototype">
+                    <img src="" alt="CoHORT rover prototype">
                     <!-- Replace with actual rover image -->
                 </div>
                 
                 <div class="gallery-img">
-                    <img src="http://source.unsplash.com/random/360x230?robot" alt="Rover team coordination test">
+                    <img src="" alt="Rover team coordination test">
                     <!-- Replace with actual rover team image -->
                 </div>
 
                 <div class="gallery-img">
-                    <img src="http://source.unsplash.com/random/360x230?robotics" alt="Rover sensor array closeup">
+                    <img src="" alt="Rover sensor array closeup">
                     <!-- Replace with actual rover component image -->
                 </div>
 
                 <div class="gallery-img">
-                    <img src="http://source.unsplash.com/random/360x230?prototype" alt="Early design prototype">
+                    <img src="" alt="Early design prototype">
                     <!-- Replace with actual prototype image -->
                 </div>
 
                 <div class="gallery-img">
-                    <img src="http://source.unsplash.com/random/360x230?simulation" alt="Rover simulation environment">
+                    <img src="" alt="Rover simulation environment">
                     <!-- Replace with actual simulation screenshot -->
                 </div>
 
@@ -141,32 +142,37 @@ d-CSS-master\index.html
             <p class="grid-description">
                 Meet the researchers behind the CoHORT project
             </p>
-
-            <div class="grid-content">
+    
+            <div class="grid-content no-numbers">
                 <article>
                     <h3>Lead Researchers</h3>
                     <p>
-                        Prof. Amiel Hartman, ME<br>
-                        Dr. Barry Ridge, CS<br>
-                        Mr. Subhobrata Chakraborty, CS<br>
-                        Dr. Nhut Ho, ME
+                        • Dr. Barry Ridge, CS<br>
+                        • Prof. Amiel Hartman, ME<br>
+                        • Mr. Subhobrata Chakraborty, CS<br>
                     </p>
                 </article>
                 
                 <article>
-                    <h3>Collaborators</h3>
-                    <p>
-                        Dr. Jean-Pierre de la Croix, JPL<br>
-                        And other partners from NASA JPL who provide expertise in space robotics and autonomous systems.
-                    </p>
-                </article>
-
-                <article>
-                    <h3>Student Team</h3>
-                    <p>
-                        Hariet Yousefi, ME<br>
-                        Our student researchers gain hands-on experience in robotics, software development, and systems engineering through their work on the CoHORT project.
-                    </p>
+                    <h3>Associates</h3>
+                    <div class="two-column-list">
+                        <p>
+                            • Alexander Chakmakian<br>
+                            • Jean Paul Collazo<br>
+                            • Jose Flores<br>
+                            • Miles Kaddoura<br>
+                            • Laila Kaddoura<br>
+                            • Bhumil Kukadiya<br>
+                        </p>
+                        <p>
+                            • Maxwell Kozlov<br>
+                            • Adrian Nguyen<br>
+                            • Neha Ananthavaram<br>
+                            • Rudra Patel<br>
+                            • Hossein Alishah<br>
+                            • Hariet Yousefi<br>
+                        </p>
+                    </div>
                 </article>
             </div>
         </div>
@@ -179,7 +185,7 @@ d-CSS-master\index.html
                 How CoHORT research can benefit society and industry
             </p>
 
-            <div class="grid-content">
+            <div class="grid-content no-numbers">
                 <article>
                     <h3>Space Exploration</h3>
                     <p>
@@ -202,61 +208,7 @@ d-CSS-master\index.html
                 </article>
             </div>
         </div>
-    </section>
-<!--
-    <section id="contact" class="main-bg section">
-        <div class="main-content contact-content">
-            <div class="contact-text-content">
-                <h2>Contact the CoHORT Team</h2>
-                <p>
-                    Interested in learning more about the CoHORT project or exploring potential collaborations? Get in touch with our research team to discuss our work and opportunities for partnership.
-                </p>
-                <p>
-                    Autonomy Research Center for STEAHM<br>
-                    California State University, Northridge<br>
-                    9324 Reseda Blvd. Room 201<br>
-                    Northridge, CA 91324<br>
-                    Tel: 818.677-5780<br>
-                    Email: arcs@csun.edu
-                </p>
-            </div>
-            <div class="contact-img">
-                <img src="./assets/img/contact-us.svg" alt="Contact CoHORT">
-                <!- You may want to replace this with a rover team image -
-            </div>
 
-            <div class="contact-form">
-                <fieldset class="form-grid">
-                    <legend>Contact Us</legend>
-
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" name="first-name" id="first-name" placeholder="Enter your first name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" name="last-name" id="last-name" placeholder="Enter your last name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Enter your email">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="message">Message</label>
-                        <textarea name="message" cols="30" rows="10" id="message" placeholder="Type your message or inquiries here..."></textarea>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <button type="submit" name="message">Send Message</button>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-    </section>
--->
 <section id="about" class="white-bg section">
     <div class="main-content flexbox-template-content">
         <h2>About CoHORT</h2>

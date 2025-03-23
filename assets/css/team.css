@@ -1,0 +1,56 @@
+/* Styles specific to the team section */
+.two-column-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.two-column-list p {
+    flex: 1;
+    margin: 0;
+}
+
+/* Special grid layout just for team section */
+#team .grid-content {
+    grid-template-columns: 1fr 2fr; /* Makes the associates column twice as wide */
+}
+
+/* Only adjust padding for the team section */
+#team .grid-content.no-numbers h3 {
+    padding-left: 0;
+}
+
+/* Adjust vertical spacing */
+#team .grid-content article {
+    width: 100%;
+}
+
+#team .grid-content article h3 {
+    margin-bottom: 1.5rem;
+}
+
+/* Style the bullet points */
+#team .grid-content p {
+    line-height: 1.8;
+}
+
+/* Make sure the two-column list aligns properly */
+#team .two-column-list p {
+    padding-right: 1rem;
+}
+
+/* Responsive styles for team section */
+@media (max-width: 800px) {
+    .two-column-list {
+        flex-direction: column;
+    }
+    
+    #team .grid-content {
+        grid-template-columns: 1fr; /* Stack vertically on small screens */
+    }
+    
+    #team .two-column-list p {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+}
