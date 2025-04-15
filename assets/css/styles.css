@@ -48,7 +48,7 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    min-height: 100vh;
+    min-height: auto;
 }
 
 .grid-main-heading
@@ -63,7 +63,25 @@
 
 #gallery-description
 {
-   padding-bottom: 3rem;
+   padding-bottom: 2rem;
+}
+
+/* Gallery specific styling - Updated for larger images */
+#gallery .main-content {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    min-height: auto;
+}
+
+#gallery .grid {
+    min-height: auto;
+}
+
+#gallery .grid-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 100%;
 }
 
 .grid-content
@@ -81,8 +99,6 @@
     padding-left: 5rem;
     padding-bottom: 2rem;
 }
-
-/* Find these rules in your styles.css file and modify them */
 
 /* Add a new class to disable counters for specific sections */
 .grid-content.no-numbers {
@@ -109,20 +125,32 @@
 
 .gallery-img
 {
-    width: 100%;
-    max-width: 36rem;
-    max-height: 23rem;
+    width: auto; /* Set to auto to allow for larger images */
+    height: 45rem; /* Significantly increased height */
+    max-width: 100%;
+    max-height: none;
     overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #ccc; /* Simple border instead of shadow */
+    position: relative;
+    margin-bottom: 2rem; /* Add some space between images when they stack */
 }
 
 .gallery-img img
 {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows full image without cropping */
     transition: all 300ms ease-in-out;
+}
+
+.gallery-img::after {
+    content: none; /* Remove the inner shadow effect */
 }
 
 .gallery-img img:hover
 {
-    transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+    transform: scale(1.02); /* Subtle scale effect on hover */
 }
 
 .responsive-table
@@ -265,12 +293,18 @@
         grid-template-columns: 1fr;
     }
     
+    #gallery .grid-content {
+        grid-template-columns: 1fr;
+    }
+    
     .gallery-img
     {
         width: 100%;
         max-width: 100%;
         max-height: 100%;
+        height: 35rem; /* Increased height on mobile too */
     }
+
 
     .gallery-img img
     {
