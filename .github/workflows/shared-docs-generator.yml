@@ -1,0 +1,162 @@
+# This reusable workflow for the CSUN ARCS CoHORT project generates launch docs, updates the Wiki and README.md, and pushes them to the repo/wiki.
+
+name: CSUN ARCS CoHORT Shared Wiki and README Documentation Generator
+
+on:
+  workflow_call:
+    inputs:
+      ros_distro:
+        required: false
+        type: string
+        default: jazzy
+      arcscfg_build_script:
+        required: false
+        type: string
+        default: no_cuda
+      arcscfg_repo:
+        required: false
+        type: string
+        default: https://github.com/csun-arcs/arcscfg.git
+      arcscfg_setup_file:
+        required: false
+        type: string
+        default: cohort_jazzy.yaml
+      arcscfg_deps_file:
+        required: false
+        type: string
+        default: cohort_ros2_jazzy_ubuntu_noble.yaml
+      github_user:
+        required: false
+        type: string
+        default: csun-arcs
+      docs_workflow_filename:
+        required: false
+        type: string
+        default: generate-docs.yml
+      tests_workflow_filename:
+        required: false
+        type: string
+        default: run-tests.yml
+
+concurrency:
+  group: generate-docs
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-docs:
+    if: |
+      github.event.head_commit.message != 'Update auto-generated README.md' &&
+      !contains(join(github.event.commits.*.modified, ','), 'README.md')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh -y
+
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{ inputs.ros_distro }}
+
+      - name: Clone and install arcscfg
+        run: |
+          git clone ${{ inputs.arcscfg_repo }} arcscfg
+          pip install -e ./arcscfg
+
+      - name: Install dependencies with arcscfg
+        run: |
+          arcscfg -d -v debug install -id -rd ${{ inputs.ros_distro }} -df ${{ inputs.arcscfg_deps_file }}
+
+      - name: Setup workspace with arcscfg
+        run: |
+          arcscfg -d -v debug setup -wc ${{ inputs.arcscfg_setup_file }} -w ros_ws -t https
+
+      - name: Debug directory tree
+        run: |
+          find .
+
+      - name: Build workspace with arcscfg
+        run: |
+          source /opt/ros/${{ inputs.ros_distro }}/setup.bash
+          arcscfg -d -v debug build -w ros_ws -u /opt/ros/${{ inputs.ros_distro }} -bs ${{ inputs.arcscfg_build_script }}
+
+      - name: Generate launch docs
+        shell: bash
+        run: |
+          source ros_ws/install/setup.bash
+          set -euo pipefail
+          python3 "./ros_ws/src/${{ github.event.repository.name }}/scripts/generate_launch_docs.py" \
+            --workspace "${GITHUB_WORKSPACE}/ros_ws" \
+            --package-name "${{ github.event.repository.name }}"
+
+      - name: List generated launch docs for this package
+        run: |
+          find ./ros_ws/launch_docs/${{ github.event.repository.name }} -name '*.md' || echo "No launch docs found"
+
+      - name: Clone GitHub Wiki
+        run: |
+          git clone "https://github.com/${{ github.repository }}.wiki.git" wiki
+
+      - name: Move generated docs to wiki directory
+        run: |
+          set -euo pipefail
+          mkdir -p wiki/launch_args
+          cp ./ros_ws/launch_docs/${{ github.event.repository.name }}/*.md wiki/launch_args/
+
+      - name: Generate Home.md from template
+        run: |
+          set -euo pipefail
+          pip install jinja2
+          python3 "./ros_ws/src/${{ github.event.repository.name }}/scripts/generate_template_md.py" \
+            --template-dir "wiki" \
+            --template-name "Home.template.md" \
+            --output "wiki/Home.md" \
+            --launch-docs-dir "ros_ws/launch_docs" \
+            --workspace "./ros_ws" \
+            --package-name "${{ github.event.repository.name }}"
+            --github-user "${{ input.github_user }}"
+            --docs-workflow-filename "${{ input.docs_workflow_filename }}"
+            --tests-workflow-filename "${{ input.tests_workflow_filename }}"
+
+      - name: Publish to GitHub Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          path: wiki/
+
+      - name: Generate README.md from template
+        run: |
+          set -euo pipefail
+          pip install jinja2
+          python3 "./ros_ws/src/${{ github.event.repository.name }}/scripts/generate_template_md.py" \
+            --template-dir "./ros_ws/src/${{ github.event.repository.name }}/templates/" \
+            --template-name "README.template.md" \
+            --output "./ros_ws/src/${{ github.event.repository.name }}/README.md" \
+            --launch-docs-dir "ros_ws/launch_docs" \
+            --workspace "./ros_ws" \
+            --package-name "${{ github.event.repository.name }}"
+            --github-user "${{ input.github_user }}"
+            --docs-workflow-filename "${{ input.docs_workflow_filename }}"
+            --tests-workflow-filename "${{ input.tests_workflow_filename }}"
+
+      - name: Clone repo with token and force-push README to autogen branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git clone "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" repo_clone
+          cp -f ./ros_ws/src/${{ github.event.repository.name }}/README.md repo_clone/README.md
+
+          cd repo_clone
+          git checkout -B autogen/readme
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && echo "No changes to commit." && exit 0
+
+          git commit -m "Update auto-generated README.md"
+          git push -f origin autogen/readme || echo "⚠️ Failed to push autogen/readme"
+
+          echo "✅ Auto-generated README pushed to autogen/readme"
+          echo "🔁 Compare changes at: https://github.com/${{ github.repository }}/compare/main...autogen/readme"
