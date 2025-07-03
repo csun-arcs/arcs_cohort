@@ -1,4 +1,4 @@
-# CoHORT: Cooperative Human-Robot Teaming
+# CoHORT: Cooperative Human Operations with Robot Teams
 A repository for tracking general tasks/issues, milestones, roadmap, etc. relevant to the overall CSUN ARCS CoHORT project.
 
 ## Project Roadmap
