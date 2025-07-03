@@ -5,28 +5,6 @@ A repository for tracking general tasks/issues, milestones, roadmap, etc. releva
 
 The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects/2).
 
-## Repositories
-
-### [arcs_cohort_bringup](https://github.com/csun-arcs/arcs_cohort_bringup)
-
-A bringup package containing launchers for the ARCS CoHORT project.
-
-### [arcs_cohort_description](https://github.com/csun-arcs/arcs_cohort_description)
-
-This package provides the description of the CSUN ARCS CoHORT rover, including its URDF model and sensor configurations, for use in ROS 2. It enables users to simulate and visualize the robot in RViz and Gazebo.
-
-### [arcs_cohort_simulation](https://github.com/csun-arcs/arcs_cohort_simulation)
-
-A meta-package containing simulation repository dependencies for the CSUN ARCS CoHORT project.
-
-#### [arcs_cohort_rviz](https://github.com/csun-arcs/arcs_cohort_rviz)
-
-RViz configuration and launch files for the ARCS CoHORT project.
-
-#### [arcs_cohort_gazebo_sim](https://github.com/csun-arcs/arcs_cohort_gazebo_sim)
-
-The `arcs_cohort_gazebo_sim` package provides a Gazebo simulation environment for the ARCS Cohort robot, enabling users to simulate the robot's behavior in various world configurations. It integrates with ROS 2 and Gazebo to support robot control, sensor simulation (e.g., Stereolabs Zed camera, LiDAR), and teleoperation using joysticks or keyboards.
-
 ## System Architecture
 
 ```mermaid
@@ -341,3 +319,41 @@ flowchart LR
     behavior_server --> planner_server
     behavior_server --> controller_server
 ```
+
+## Repositories
+
+### [arcs_cohort_bringup](https://github.com/csun-arcs/arcs_cohort_bringup)
+
+A bringup package containing the main launchers for the ARCS CoHORT project.
+
+### [arcs_cohort_description](https://github.com/csun-arcs/arcs_cohort_description)
+
+This package provides the description of the CSUN ARCS CoHORT rover, including its URDF model and sensor configurations, for use in ROS 2. It enables users to simulate and visualize the robot in RViz and Gazebo.
+
+### [arcs_cohort_simulation](https://github.com/csun-arcs/arcs_cohort_simulation)
+
+A simulation meta-package that pulls in the following packages:
+
+#### [arcs_cohort_rviz](https://github.com/csun-arcs/arcs_cohort_rviz)
+
+RViz configuration and launch files for the ARCS CoHORT project.
+
+#### [arcs_cohort_gazebo_sim](https://github.com/csun-arcs/arcs_cohort_gazebo_sim)
+
+The `arcs_cohort_gazebo_sim` package provides a Gazebo simulation environment for the ARCS Cohort robot, enabling users to simulate the robot's behavior in various world configurations. It integrates with ROS 2 and Gazebo to support robot control, sensor simulation (e.g., Stereolabs Zed camera, LiDAR), and teleoperation using joysticks or keyboards.
+
+### [arcs_cohort_perception](https://github.com/csun-arcs/arcs_cohort_perception)
+
+A perception meta-package that pulls in the following packages:
+
+#### [arcs_cohort_sensor_preprocessor](https://github.com/csun-arcs/arcs_cohort_sensor_preprocessor)
+
+Sensor data preprocessing tools (e.g., pointcloud to laserscan).
+
+### [arcs_cohort_navigation](https://github.com/csun-arcs/arcs_cohort_navigation)
+
+A navigation package based on [Nav 2](https://docs.nav2.org/).
+
+### [arcs_cohort_docs_tools](https://github.com/csun-arcs/arcs_cohort_docs_tools)
+
+Contains tooling for auto-generation of wiki and README files for GitHub Actions workflows.
