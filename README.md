@@ -1,6 +1,10 @@
 # CoHORT: Cooperative Human Operations with Robot Teams
 A repository for tracking general tasks/issues, milestones, roadmap, etc. relevant to the overall CSUN ARCS CoHORT project.
 
+## Quickstart
+
+TODO
+
 ## Project Roadmap
 
 The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects/2).
@@ -321,6 +325,10 @@ flowchart LR
 ```
 
 ## Repositories
+
+### [arcscfg](https://github.com/csun-arcs/arcscfg)
+
+`arcscfg` is a command-line tool designed to streamline the management of ROS-based robotics projects at CSUN ARCS.
 
 ### [arcs_cohort_bringup](https://github.com/csun-arcs/arcs_cohort_bringup)
 
