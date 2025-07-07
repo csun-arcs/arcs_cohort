@@ -1,10 +1,6 @@
 # CoHORT: Cooperative Human Operations with Robot Teams
 A repository for tracking general tasks/issues, milestones, roadmap, etc. relevant to the overall CSUN ARCS CoHORT project.
 
-## Quickstart
-
-TODO
-
 ## Project Roadmap
 
 The CoHORT project roadmap can be found [here](https://github.com/orgs/csun-arcs/projects/2).
@@ -336,3 +332,67 @@ flowchart LR
   - [arcs_cohort_sensor_preprocessor](https://github.com/csun-arcs/arcs_cohort_sensor_preprocessor): Sensor data preprocessing tools (e.g., pointcloud to laserscan).
 - [arcs_cohort_navigation](https://github.com/csun-arcs/arcs_cohort_navigation): A navigation package based on [Nav 2](https://docs.nav2.org/).
 - [arcs_cohort_docs_tools](https://github.com/csun-arcs/arcs_cohort_docs_tools): Contains tooling for auto-generation of wiki and README files for GitHub Actions workflows.
+
+## Installation
+
+### Quickstart
+
+#### 1. Install [arcscfg](https://github.com/csun-arcs/arcscfg)
+
+Follow the instructions on the [arcscfg](https://github.com/csun-arcs/arcscfg) repository page to install `arcscfg`.
+
+#### 2. Install [ROS 2](https://docs.ros.org/en/rolling/index.html)
+
+Install the appropriate [ROS 2](https://docs.ros.org/en/rolling/index.html) distribution for your system, e.g. [ROS 2 Jazzy Jalisco](https://docs.ros.org/en/jazzy/index.html) if you are on working on [Ubuntu 24.04.2 (Noble Numbat)](https://releases.ubuntu.com/noble/).
+
+`arcscfg` can be used to automate the installation of ROS 2 if an appropriate installation script is available:
+
+```bash
+arcscfg install --install-ros2
+```
+
+#### 3. Install Dependencies
+
+Install dependencies for your ROS 2 distribution using `arcscfg`:
+
+```bash
+arcscfg install --install-deps --ros-distro jazzy
+```
+
+You will be prompted to select a dependency configuration file.  Select the one that is most appropriate for your ROS 2 distribution / OS combo, e.g. `cohort_ros2_jazzy_ubuntu_noble.yaml` for Jazzy/Noble.  It is also possible to specify the appropriate dependency configuration file as a command-line argument:
+
+```bash
+arcscfg install --install-deps --ros-distro jazzy --dependency-file cohort_ros2_jazzy_ubuntu_noble.yaml
+```
+
+#### 4. Set up a CoHORT ROS 2 Workspace
+
+Set up a CoHORT ROS 2 workspace using `arcscfg`:
+
+```bash
+arcscfg setup --workspace ~/cohort_ws --workspace-config cohort_jazzy.yaml
+```
+
+This will setup a workspace in the user's home directory at `~/cohort_ws` and clone the appropriate repositories as specified in `cohort_jazzy.yaml`.  This assumes that user wishes to clone the packages using the `SSH` Git transport/protocol for a developement environment, which requires the user to have their SSH key(s) set up on the Git host server.  To use the `HTTPS` Git transport/protocol instead, try:
+
+```
+arcscfg setup --workspace ~/cohort_tmp_ws --workspace-config cohort_jazzy.yaml --transport https
+```
+
+#### 5. Build the Workspace
+
+The ROS 2 workspace may also be built using `arcscfg`:
+
+```bash
+arcscfg build --underlay /opt/ros/jazzy --workspace ~/cohort_ws
+```
+
+`arcscfg` uses [`colcon`](https://colcon.readthedocs.io/en/released/user/quick-start.html) under the hood, just like a standard ROS 2 workspace build.  To turn on symbolic link installation, use:
+
+```bash
+arcscfg build --underlay /opt/ros/jazzy --workspace ~/cohort_ws --symlink-install
+```
+
+## Usage
+
+TODO
