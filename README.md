@@ -395,4 +395,15 @@ arcscfg build --underlay /opt/ros/jazzy --workspace ~/cohort_ws --symlink-instal
 
 ## Usage
 
-TODO
+### Simulation
+
+#### Single-Rover Simulation
+
+To launch the CoHORT stack using a single rover in simulation, run the following:
+
+```bash
+source ~/cohort_ws/install/setup.bash
+ros2 launch arcs_cohort_bringup simulation_bringup.launch.py
+```
+
+For more information on available options, see the [`simulation_bringup.launch.py` wiki documentation](https://github.com/csun-arcs/arcs_cohort_bringup/wiki/simulation_bringup.launch) in the [`arcs_cohort_bringup` repository](https://github.com/csun-arcs/arcs_cohort_bringup).
