@@ -376,7 +376,7 @@ arcscfg setup --workspace ~/cohort_ws --workspace-config cohort_jazzy.yaml
 This will setup a workspace in the user's home directory at `~/cohort_ws` and clone the appropriate repositories as specified in `cohort_jazzy.yaml`.  This assumes that user wishes to clone the packages using the `SSH` Git transport/protocol for a developement environment, which requires the user to have their SSH key(s) set up on the Git host server.  To use the `HTTPS` Git transport/protocol instead, try:
 
 ```
-arcscfg setup --workspace ~/cohort_tmp_ws --workspace-config cohort_jazzy.yaml --transport https
+arcscfg setup --workspace ~/cohort_ws --workspace-config cohort_jazzy.yaml --transport https
 ```
 
 #### 5. Build the Workspace
