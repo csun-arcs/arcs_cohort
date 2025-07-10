@@ -407,3 +407,18 @@ ros2 launch arcs_cohort_bringup simulation_bringup.launch.py
 ```
 
 For more information on available options, see the [`simulation_bringup.launch.py` wiki documentation](https://github.com/csun-arcs/arcs_cohort_bringup/wiki/simulation_bringup.launch) in the [`arcs_cohort_bringup` repository](https://github.com/csun-arcs/arcs_cohort_bringup).
+
+#### Multi-Rover Simulation
+
+To launch the CoHORT stack using multiple rovers in simulation, run the following:
+
+```bash
+source ~/cohort_ws/install/setup.bash
+ros2 launch arcs_cohort_bringup multi_rover_sim_bringup.launch.py
+```
+
+A single instance of Gazebo will be launched, populated with multiple rover instances.  Multiple instances of RViz will also be launched - one for each rover, as well as multiple instances of the various nodes, etc., required to run the autonomy stack for each rover, each functioning under different namespaces like `/cohort1`, `/cohort2`, etc.  The rover configurations are specified via a YAML file, e.g. [`two_rovers.yaml`](https://github.com/csun-arcs/arcs_cohort_bringup/blob/main/config/two_rovers.yaml).
+
+**NOTE:** This can be quite computationally intensive - it is recommended to use a capable workstation!
+
+For more information on available options, see the [`multi_rover_sim_bringup.launch.py` wiki documentation](https://github.com/csun-arcs/arcs_cohort_bringup/wiki/multi_rover_sim_bringup.launch) in the [`arcs_cohort_bringup` repository](https://github.com/csun-arcs/arcs_cohort_bringup).
